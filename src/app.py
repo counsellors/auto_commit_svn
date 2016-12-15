@@ -8,9 +8,7 @@ import json
 import fnmatch
 import datetime
 import hashlib
-import threading
 import logging
-import copy
 from logging.handlers import RotatingFileHandler
 from flask import *
 
@@ -83,7 +81,6 @@ def get_sample(token=None):
     if CheckToken(token):
         ret['status'] = 201
         return ret
-    # pkg_dir = "/tmp"
     filename = request.args.get('filename')
     pkg_type = request.args.get('type')
     resp = ''
@@ -105,7 +102,6 @@ def get_sample(token=None):
         logging.info( "New files     : {new_files}".format(new_files=new_files ) )
         logging.info( "Changed files : {changed_files}".format(changed_files=changed_files) )
         logging.info( "Ignore files  : {ignore_files}".format(ignore_files=ignore_files) )
-        a = 1/0
     except Exception, e:
         resp = Response("error: {e}".format(e=e))
     else:
