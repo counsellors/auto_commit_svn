@@ -24,8 +24,8 @@ def CheckToken(token):
     md5 = hashlib.md5(key).hexdigest()
     print md5
     if md5 != token:
-        return 0
-    return 1
+        return 1
+    return 0
 
 def replace_changed_files(filename):
     match = re.search(r'^[AM]\s+([^\s]+)*', filename)
